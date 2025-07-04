@@ -2,7 +2,7 @@ from googlereviews import CSVProcessor
 import pandas as pd
 from PII.pii import TextAnalyzerService
 from profanity_masker.main import profanity_masker
-from sentiment_classifier.main import TextClassifier
+from sentiment_classifier.main_simple import TextClassifier
 import time
 # Step 1: Use CSVProcessor to drop columns and save the processed file
 start_time = time.perf_counter()
@@ -27,7 +27,7 @@ for index, row in df.iterrows():
 
     # Anonymize text
     anonymized_text, req_dict = text_analyzer_service_model1.anonymize_text(text, entities_model1, operator="encrypt")
-    anonymized_texts.append(anonymized_text.text)
+    anonymized_texts.append(anonymized_text)
 
 df['Anonymized_Text'] = anonymized_texts 
 

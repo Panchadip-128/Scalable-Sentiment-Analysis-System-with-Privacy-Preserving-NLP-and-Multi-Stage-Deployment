@@ -4,7 +4,7 @@ import time
 
 if __name__ == "__main__":
     # Load the CSV file
-    df = pd.read_csv("/home/develop/Project/profanity_masker/output_masked.csv")
+    df = pd.read_csv("../profanity_masker/output_masked.csv")
 
     # Initialize the text classifier
     checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"

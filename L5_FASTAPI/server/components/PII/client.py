@@ -4,7 +4,7 @@ import pandas as pd
 
 if __name__ == "__main__":
     # Load the CSV file
-    df = pd.read_csv("/home/develop/Project/reviews.csv")
+    df = pd.read_csv("../../../reviews.csv")
 
     # Create an instance of TextAnalyzerService with the desired model
     text_analyzer_service_model1 = TextAnalyzerService(model_choice="obi/deid_roberta_i2b2")
@@ -27,8 +27,8 @@ if __name__ == "__main__":
         deanonymized_text = text_analyzer_service_model1.deanonymize_text(anonymized_text)
 
         # Append anonymized and deanonymized texts to lists
-        anonymized_texts.append(anonymized_text.text)
-        deanonymized_texts.append(deanonymized_text.text)
+        anonymized_texts.append(anonymized_text)
+        deanonymized_texts.append(deanonymized_text)
 
     # Add anonymized and deanonymized texts as new columns in the DataFrame
     df['Anonymized_Text'] = anonymized_texts

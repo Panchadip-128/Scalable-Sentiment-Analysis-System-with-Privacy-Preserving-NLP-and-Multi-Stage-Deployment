@@ -27,7 +27,7 @@ for index, row in df.iterrows():
 
     # Anonymize text
     anonymized_text, req_dict = text_analyzer_service_model1.anonymize_text(text, entities_model1, operator="encrypt")
-    anonymized_texts.append(anonymized_text.text)
+    anonymized_texts.append(anonymized_text)
 
 df['Anonymized_Text'] = anonymized_texts 
 

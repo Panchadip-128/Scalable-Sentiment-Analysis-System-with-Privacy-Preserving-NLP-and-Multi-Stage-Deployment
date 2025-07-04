@@ -1,4 +1,5 @@
-from presidio_anonymizer import AnonymizerEngine, DeanonymizeEngine, OperatorConfig
+from presidio_anonymizer import AnonymizerEngine, DeanonymizeEngine
+from presidio_anonymizer.entities import OperatorConfig
 from presidio_anonymizer.operators import Operator, OperatorType
 from pprint import pprint
 from presidio_analyzer.nlp_engine import TransformersNlpEngine
@@ -17,8 +18,14 @@ from presidio_anonymizer.entities import (
 )
 from presidio_anonymizer.operators import Decrypt
 from typing import List, Optional, Tuple, Dict
-from .deanonymizer import InstanceCounterDeanonymizer
-from .anonymizer import InstanceCounterAnonymizer
+
+try:
+    from .deanonymizer import InstanceCounterDeanonymizer
+    from .anonymizer import InstanceCounterAnonymizer
+except ImportError:
+    # If relative import fails, try absolute import
+    from deanonymizer import InstanceCounterDeanonymizer
+    from anonymizer import InstanceCounterAnonymizer
 
 
 class TextAnalyzerService:

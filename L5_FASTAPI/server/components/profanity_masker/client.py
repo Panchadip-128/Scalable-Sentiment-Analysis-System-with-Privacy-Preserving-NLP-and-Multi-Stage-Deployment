@@ -3,7 +3,7 @@ import pandas as pd
 
 if __name__ == "__main__":
     # Load the CSV file
-    df = pd.read_csv("/home/develop/Project/PII/output_anonymized.csv")
+    df = pd.read_csv("../PII/output_anonymized.csv")
 
     # Initialize the profanity masker
     masker = profanity_masker()

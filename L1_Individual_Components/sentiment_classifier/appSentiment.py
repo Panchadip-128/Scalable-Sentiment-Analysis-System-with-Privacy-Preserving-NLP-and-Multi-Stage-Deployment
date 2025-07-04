@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from main import TextClassifier
+from main_simple import TextClassifier
 import time
 
 class SessionState:

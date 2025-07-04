@@ -27,8 +27,8 @@ if __name__ == "__main__":
         deanonymized_text = text_analyzer_service_model1.deanonymize_text(anonymized_text)
 
         # Append anonymized and deanonymized texts to lists
-        anonymized_texts.append(anonymized_text.text)
-        deanonymized_texts.append(deanonymized_text.text)
+        anonymized_texts.append(anonymized_text)
+        deanonymized_texts.append(deanonymized_text)
 
     # Add anonymized and deanonymized texts as new columns in the DataFrame
     df['Anonymized_Text'] = anonymized_texts

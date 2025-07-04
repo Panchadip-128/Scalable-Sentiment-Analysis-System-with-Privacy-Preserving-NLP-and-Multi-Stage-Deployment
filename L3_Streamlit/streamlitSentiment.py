@@ -3,7 +3,7 @@ import pandas as pd
 from googlereviews import CSVProcessor
 from PII.pii import TextAnalyzerService
 from profanity_masker.main import profanity_masker
-from sentiment_classifier.main import TextClassifier
+from sentiment_classifier.main_simple import TextClassifier
 import time
 import matplotlib.pyplot as plt
 
@@ -35,8 +35,8 @@ if uploaded_file is not None:
     for index, row in df.iterrows():
         text = row[0]
         entities_model1 = text_analyzer_service_model1.analyze_text(text)
-        anonymized_text, req_dict = text_analyzer_service_model1.anonymize_text(text, entities_model1, operator="encrypt")
-        anonymized_texts.append(anonymized_text.text)
+        anonymized_text, req_dict = text_analyzer_service_model1.anonymize_text(text, entities_model1, operator="replace")
+        anonymized_texts.append(anonymized_text)
     df['Anonymized_Text'] = anonymized_texts
     c = time.perf_counter()
     df.to_csv("output_anonymized.csv", index=False)

@@ -1,4 +1,5 @@
-from presidio_anonymizer import AnonymizerEngine, DeanonymizeEngine, OperatorConfig
+from presidio_anonymizer import AnonymizerEngine, DeanonymizeEngine
+from presidio_anonymizer.entities import OperatorConfig
 from presidio_anonymizer.operators import Operator, OperatorType
 from pprint import pprint
 from presidio_analyzer.nlp_engine import TransformersNlpEngine
@@ -17,8 +18,14 @@ from presidio_anonymizer.entities import (
 )
 from presidio_anonymizer.operators import Decrypt
 from typing import List, Optional, Tuple, Dict
-from .deanonymizer import InstanceCounterDeanonymizer
-from .anonymizer import InstanceCounterAnonymizer
+
+try:
+    from .deanonymizer import InstanceCounterDeanonymizer
+    from .anonymizer import InstanceCounterAnonymizer
+except ImportError:
+    # If relative import fails, try absolute import
+    from deanonymizer import InstanceCounterDeanonymizer
+    from anonymizer import InstanceCounterAnonymizer
 
 
 class TextAnalyzerService:
@@ -26,19 +33,29 @@ class TextAnalyzerService:
     A service class for text analysis, anonymization, and deanonymization.
     """
 
-    def __init__(self, model_choice: str = "obi/deid_roberta_i2b2"):
+    def __init__(self, model_choice: str = "en_core_web_sm"):
         """
-        Initialize the TextAnalyzerService with a specified transformer model.
+        Initialize the TextAnalyzerService with a specified model.
 
-        :param model_choice: The transformer model to use for analysis. Defaults to "obi/deid_roberta_i2b2".
+        :param model_choice: The model to use for analysis. Defaults to "en_core_web_sm" (spaCy model).
         """
-        self.model_config = [
-            {
-                "lang_code": "en",
-                "model_name": {"spacy": "en_core_web_sm", "transformers": model_choice},
-            }
-        ]
-        self.nlp_engine = TransformersNlpEngine(models=self.model_config, )
+        print(f"Initializing PII service with model: {model_choice}")
+        
+        # Use spaCy engine which is much faster than transformer models
+        if model_choice.startswith("en_core_web"):
+            # Use spaCy engine for faster processing
+            from presidio_analyzer.nlp_engine import SpacyNlpEngine
+            self.nlp_engine = SpacyNlpEngine(models=[{"lang_code": "en", "model_name": model_choice}])
+        else:
+            # Use transformer engine for specialized models
+            self.model_config = [
+                {
+                    "lang_code": "en",
+                    "model_name": {"spacy": "en_core_web_sm", "transformers": model_choice},
+                }
+            ]
+            self.nlp_engine = TransformersNlpEngine(models=self.model_config)
+        
         self.analyzer = AnalyzerEngine(nlp_engine=self.nlp_engine)
         self.anonymizer = AnonymizerEngine()
         self.anonymizer.add_anonymizer(InstanceCounterAnonymizer)

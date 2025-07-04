@@ -6,8 +6,13 @@ class CSVProcessor:
         self.df = pd.read_csv(self.csv_file_path)
 
     def drop_columns(self, columns_to_drop):
-        # Drop the specified columns
-        self.df.drop(columns=columns_to_drop, inplace=True)
+        # Drop the specified columns only if they exist
+        existing_columns = [col for col in columns_to_drop if col in self.df.columns]
+        if existing_columns:
+            self.df.drop(columns=existing_columns, inplace=True)
+            print(f"Dropped columns: {existing_columns}")
+        else:
+            print(f"No columns to drop. Available columns: {list(self.df.columns)}")
 
     def save_to_csv(self, output_file_path):
         # Save the updated DataFrame to a new CSV file

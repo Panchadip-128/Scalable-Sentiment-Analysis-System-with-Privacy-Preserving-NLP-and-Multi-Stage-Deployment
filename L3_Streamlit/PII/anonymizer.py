@@ -1,7 +1,7 @@
 from typing import Dict
 from pprint import pprint
 from presidio_analyzer import AnalyzerEngine
-from presidio_anonymizer import AnonymizerEngine, DeanonymizeEngine, OperatorConfig
+from presidio_anonymizer import AnonymizerEngine, DeanonymizeEngine
 from presidio_anonymizer.operators import Operator, OperatorType
 from presidio_analyzer.nlp_engine import TransformersNlpEngine
 

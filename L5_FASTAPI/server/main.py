@@ -71,7 +71,7 @@ async def anonymise():
             # Anonymize the text based on identified entities
             anonymized_text, _ = text_analyzer_service_model1.anonymize_text(text, entities_model1, operator="encrypt")
             # Append the anonymized text to the list
-            anonymized_texts.append(anonymized_text.text)
+            anonymized_texts.append(anonymized_text)
 
         # Add the anonymized texts to the dataframe
         df['Anonymized_Text'] = anonymized_texts

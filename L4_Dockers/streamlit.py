@@ -36,7 +36,7 @@ if uploaded_file is not None:
         text = row[0]
         entities_model1 = text_analyzer_service_model1.analyze_text(text)
         anonymized_text, req_dict = text_analyzer_service_model1.anonymize_text(text, entities_model1, operator="encrypt")
-        anonymized_texts.append(anonymized_text.text)
+        anonymized_texts.append(anonymized_text)
     df['Anonymized_Text'] = anonymized_texts
     c = time.perf_counter()
     df.to_csv("output_anonymized.csv", index=False)
@@ -45,8 +45,8 @@ if uploaded_file is not None:
 
     # Step 4: Mask profanity
     df = pd.read_csv("output_anonymized.csv")
-    masker = profanity_masker()
-    df['Masked_Text'] = df['Anonymized_Text'].apply(lambda text: masker.mask_words(text))
+    masker = profanity_masker
+    df['Masked_Text'] = df['Anonymized_Text'].apply(lambda text: masker(text))
     df.to_csv("output_masked.csv", index=False)
     d = time.perf_counter()
 
