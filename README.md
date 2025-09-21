@@ -169,7 +169,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Panchadip Samanta**
+**Panchadip **
 - GitHub: [@Panchadip-128](https://github.com/Panchadip-128)
 - LinkedIn: [Your LinkedIn Profile]
 
@@ -182,3 +182,4 @@ This project is licensed under the MIT License.
 ---
 
 **Built with ❤️ for ML Engineering Excellence**
+
