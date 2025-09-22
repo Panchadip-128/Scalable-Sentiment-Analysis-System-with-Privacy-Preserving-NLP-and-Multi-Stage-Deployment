@@ -1,8 +1,8 @@
-# 🚀 Sentiment Analysis Google Reviews - Complete ML Pipeline
+# Sentiment Analysis Google Reviews - Complete ML Pipeline
 
 A comprehensive sentiment analysis platform built progressively from individual components to a full-stack web application with heavy ML capabilities, Docker containerization, and modern web interfaces.
 
-## 📋 Project Overview
+## Project Overview
 
 This project demonstrates a complete ML engineering pipeline for sentiment analysis of Google reviews, featuring:
 - **PII Anonymization** using Microsoft Presidio
@@ -11,7 +11,7 @@ This project demonstrates a complete ML engineering pipeline for sentiment analy
 - **Multiple Deployment Options** from Streamlit to full-stack React apps
 - **Production-Ready** Docker containerization and REST APIs
 
-## 🏗️ Architecture Progression
+## Architecture Progression
 
 ### L1: Individual Components
 - **PII Anonymization**: Detect and anonymize personal information
@@ -80,7 +80,7 @@ pip install -r requirements.txt
 streamlit run streamlitSentiment.py --server.enableCORS false --server.enableXsrfProtection false
 ```
 
-## 📊 API Endpoints
+##  API Endpoints
 
 ### FastAPI (Port 13001)
 - `POST /upload` - Upload CSV files
@@ -92,7 +92,7 @@ streamlit run streamlitSentiment.py --server.enableCORS false --server.enableXsr
 - `GET /read-data` - JSON data access
 - `GET /docs` - Interactive API documentation
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 ### Backend
 - **FastAPI** - Modern Python web framework
@@ -114,7 +114,7 @@ streamlit run streamlitSentiment.py --server.enableCORS false --server.enableXsr
 - **Docker Compose** - Multi-service orchestration
 - **Streamlit** - Rapid prototyping
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 Sentiment_Analysis_Demo_Project/
@@ -156,25 +156,25 @@ Sentiment_Analysis_Demo_Project/
 - **Scalability**: Container-ready for cloud deployment
 - **Memory Usage**: Optimized for production environments
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Submit a pull request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
-## 👨‍💻 Author
+##  Author
 
 **Panchadip **
 - GitHub: [@Panchadip-128](https://github.com/Panchadip-128)
 - LinkedIn: [Your LinkedIn Profile]
 - Served through Intel Xeon Servers
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Microsoft Presidio for PII detection
 - Hugging Face for transformer models
@@ -182,6 +182,6 @@ This project is licensed under the MIT License.
 
 ---
 
-**Built with ❤️ for ML Engineering Excellence**
+**Built with ❤️ for ML Engineering Excellence with Intel**
 
 
