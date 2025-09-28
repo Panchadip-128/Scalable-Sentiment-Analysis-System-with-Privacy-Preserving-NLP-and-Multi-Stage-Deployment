@@ -171,7 +171,7 @@ This project is licensed under the MIT License.
 
 **Panchadip **
 - GitHub: [@Panchadip-128](https://github.com/Panchadip-128)
-- LinkedIn: [Your LinkedIn Profile]
+
 - Served through Intel Xeon Servers
 
 ##  Acknowledgments
